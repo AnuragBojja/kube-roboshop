@@ -23,5 +23,5 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: anurag/mongodb:v1
+        image: anuragbojja/mongodb:v1
         imagePullPolicy: Always
