@@ -1,1 +1,27 @@
-v
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: mongodb
+  namespace: roboshop-dev
+  labels: 
+    project: roboshop
+    service: mongodb
+    tier: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: mongodb
+      tier: database
+      env: dev
+  template:
+    metadata:
+      labels:
+        service: mongodb
+        tier: database
+        env: dev
+    spec:
+      containers:
+      - name: mongodb
+        image: anurag/mongodb:v1
+        imagePullPolicy: Always
