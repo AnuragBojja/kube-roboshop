@@ -67,6 +67,7 @@ metadata:
     service: frontend
     tier: frontend
 spec:
+  type: NodePort
   selector:
     service: frontend
     tier: frontend
