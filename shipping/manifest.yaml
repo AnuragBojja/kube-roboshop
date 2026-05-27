@@ -61,7 +61,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: shipping
-  namespace: shipping
+  namespace: roboshop-dev
   labels:
     project: roboshop
     service: shipping
