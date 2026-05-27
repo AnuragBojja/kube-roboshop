@@ -51,7 +51,7 @@ spec:
     service: mongodb
     tier: database
     env: dev
-  port:
+  ports:
   - protocol: TCP
     port: 27017
     targetPort: 27017
