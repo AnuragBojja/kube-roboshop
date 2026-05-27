@@ -2,9 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis
+  namespace: roboshop-dev
   labels:
-    name: redis
-    namespace: roboshop-dev
+    project: roboshop
+    service: redis 
+    tier: database
 spec:
   replicas: 1
   selector:
@@ -12,13 +14,14 @@ spec:
       service: redis
       tier: database
       env: dev
-    template:
-      metadata:
-        labels:
-          service: redis
-          tier: database
-          env: dev 
-      spec:
+  template:
+    metadata:
+      labels:
+        service: redis
+        tier: database
+        env: dev 
+    spec:
+      containers:
       - name: redis 
         image: redis:7
         # ports:

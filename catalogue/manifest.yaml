@@ -17,8 +17,10 @@ metadata:
   name: catalogue
   namespace: roboshop-dev
   labels:
-    name: catalogue
-    namespace: roboshop-dev
+    project: roboshop
+    service: catalogue
+    tier: backend
+    
 spec:
   replicas: 1
   selector:
