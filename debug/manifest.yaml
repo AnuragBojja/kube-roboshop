@@ -8,7 +8,7 @@ metadata:
     for: debuggung
 spec:
   containers:
-    name: debug
+  - name: debug
     image: anuragbojja/debug:v1
     imagePullPolicy: Always
     ports:
