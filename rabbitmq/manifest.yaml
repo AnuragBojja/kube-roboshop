@@ -40,7 +40,7 @@ spec:
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
-              name: rabbitmq
+                name: rabbitmq
 
           readinessProbe:
             tcpSocket:
