@@ -1,0 +1,73 @@
+apiVersion: v1 
+kind: ConfigMap
+metadata:
+  name: mysql
+  namespace: mysql
+data:
+  MYSQL_ROOT_PASSWORD: "RoboShop@1"
+
+---
+apiVersion: apps/v1
+king: Deployment
+metadata:
+  name: mysql
+  namespace: roboshop-dev
+  labels:
+    project: roboshop
+    service: mysql
+    tier: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: mysql
+      tier: database
+      env: dev
+  template:
+    metadata:
+      labels:
+        service: mysql
+        tier: database
+        env: dev
+    spec:
+      containers:
+        - name: mysql
+          image: anuragbojja/mysql:v1
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: mysql
+
+          readinessProbe:
+            tcpSocket:
+              port: 3306
+            initialDelaySeconds: 30
+            failureThreshold: 2
+            periodSeconds: 10
+
+          livenessProbe:
+            tcpSocket:
+              port: 3306
+            initialDelaySeconds: 50
+            failureThreshold: 2
+            periodSeconds: 10
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: roboshop-dev
+  labels:
+    project: roboshop
+    service: mysql
+    tier: database
+spec:
+  selector:
+    service: mysql
+    tier: database
+    env: dev
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
