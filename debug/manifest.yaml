@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: debug
+  namespace: roboshop-dev
+  labels: 
+    project: roboshop
+    for: debuggung
+spec:
+  containers:
+    name: debug
+    image: anuragbojja/debug:v1
+    imagePullPolicy: Always
+    ports:
+    - containerPort: 80
