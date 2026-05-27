@@ -67,7 +67,7 @@ metadata:
     service: frontend
     tier: frontend
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     service: frontend
     tier: frontend
