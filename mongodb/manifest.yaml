@@ -22,22 +22,22 @@ spec:
         env: dev
     spec:
       containers:
-      - name: mongodb
-        image: anuragbojja/mongodb:v1
-        imagePullPolicy: Always
-        readinessProbe:
-          tcpSocket:
-            port: 27017
-          initialDelaySeconds: 15
-          failureThreshold: 1
-          periodSeconds: 5
-          
-        livenessProbe:
-          tcpSocket:
-            port: 27017
-          initialDelaySeconds: 15
-          failureThreshold: 3
-          periodSeconds: 10
+        - name: mongodb
+          image: anuragbojja/mongodb:v1
+          imagePullPolicy: Always
+          readinessProbe:
+            tcpSocket:
+              port: 27017
+            initialDelaySeconds: 15
+            failureThreshold: 1
+            periodSeconds: 5
+            
+          livenessProbe:
+            tcpSocket:
+              port: 27017
+            initialDelaySeconds: 15
+            failureThreshold: 3
+            periodSeconds: 10
 
 ---
 

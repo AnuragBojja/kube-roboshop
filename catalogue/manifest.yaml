@@ -36,26 +36,29 @@ spec:
         env: dev
     spec:
       containers:
-      - name: catalogue
-        image: anuragbojja/catalogue:v1
-        ports:
-        - containerPort: 80
-        imagePullPolicy: Always
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-          initialDelaySeconds: 15
-          failureThreshold: 1
-          periodSeconds: 5
-          
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-          initialDelaySeconds: 15
-          failureThreshold: 3
-          periodSeconds: 10
+        - name: catalogue
+          image: anuragbojja/catalogue:v1
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: catalogue
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 15
+            failureThreshold: 1
+            periodSeconds: 5
+            
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 15
+            failureThreshold: 3
+            periodSeconds: 10
 
 ---
 apiVersion: v1 
