@@ -34,7 +34,7 @@ spec:
         env: dev
     spec:
       containers:
-        name: catalogue
+      - name: catalogue
         image: anuragbojja/catalogue:v1
         ports:
         - containerPort: 80
