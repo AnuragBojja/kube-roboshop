@@ -40,6 +40,9 @@ spec:
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: shipping
 
           readinessProbe:
             httpGet:
