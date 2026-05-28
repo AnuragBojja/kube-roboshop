@@ -31,7 +31,6 @@ spec:
         tier: backend
         env: dev
     spec:
-      enableServiceLinks: false
       containers:
         - name: cart
           image: anuragbojja/cart:v1
